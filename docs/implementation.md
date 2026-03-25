@@ -32,7 +32,11 @@ Open App → Login/Register → Dashboard (+ Export)
 5. **OCR Processing** — Image is sent to Google Vision, data is extracted
 6. **Controleer gegevens** — Unified screen for both new and existing receipts. User reviews/edits fields: datum, bruto totaal, BTW%, BTW bedrag, betaalmethode, categorie, extra informatie. Receipt image visible at the bottom
 7. **Saved** — Receipt is stored in the database, user returns to dashboard
-8. **Bonnetjes lijst** — Browse all receipts sorted newest first, with category filter tabs. No search bar. Each item shows: datum, bedrag, BTW%, categorie (text label). "Categorieën" button opens bottom sheet to manage categories
+8. **Bonnetjes lijst** — Browse all receipts sorted newest first, with category filter tabs. No search bar.
+   - Each item shows in a single line: datum (left) + meta (bedrag • BTW% • categorie label)
+   - No store name displayed
+   - Category shown as text label chip, not emoji
+   - "Categorieën" button opens bottom sheet to manage categories
 9. **Opening existing receipt** — Tapping a receipt opens the same "Controleer gegevens" screen with all fields editable + image at the bottom. No separate detail or edit screen
 10. **Instellingen** — Accessible via round settings button in the header (top-right), not in the bottom nav
 
