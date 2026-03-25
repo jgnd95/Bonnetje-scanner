@@ -4,6 +4,25 @@ All data is stored in Supabase (PostgreSQL). This document covers all tables, in
 
 ---
 
+## Supabase Setup
+
+**Project URL:** https://aaotnlfbmcnvszeuxzlb.supabase.co
+**Authentication:** Password-based (email + password)
+
+### Environment Variables
+
+Add to `.env.local`:
+```
+NEXT_PUBLIC_SUPABASE_URL=https://aaotnlfbmcnvszeuxzlb.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=sb_publishable_q4LfA4KWOi1GLgPrJ1j-VQ_i3nBG1cg
+```
+
+### Deployment
+
+Run all SQL statements below in Supabase's SQL Editor to initialize the database.
+
+---
+
 ## Table: `profiles`
 
 Stores basic user info in the `public` schema. A database trigger automatically inserts a row here whenever a new user signs up via Supabase Auth. This is needed because `auth.users` lives in a restricted schema your app can't query directly.
@@ -16,6 +35,24 @@ CREATE TABLE profiles (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Users see own profile" ON profiles
+  FOR ALL USING (auth.uid() = id);
+
+-- Trigger to automatically create profile on signup
+CREATE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.profiles (id, email, display_name)
+  VALUES (new.id, new.email, new.email);
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 ```
 
 | Column | Type | Description |
