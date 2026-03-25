@@ -29,12 +29,11 @@ receipt-scanner/
 │   │   │   └── register/page.tsx           # Register form — email, password, display name
 │   │   ├── (app)/                          # Authenticated pages (with bottom nav)
 │   │   │   ├── layout.tsx                  # App layout — BottomNav + Header wrapper
-│   │   │   ├── dashboard/page.tsx          # Monthly overview, recent receipts, export CSV/Excel
-│   │   │   ├── scan/page.tsx               # Camera/upload — take photo or pick from gallery
+│   │   │   ├── dashboard/page.tsx          # Total count + amount, export CSV, recent receipts
 │   │   │   ├── receipts/
-│   │   │   │   ├── page.tsx                # All receipts — category filters, date/amount filters
-│   │   │   │   └── [id]/page.tsx           # Single receipt detail — view, edit, delete
-│   │   │   └── settings/page.tsx           # User settings — display name, email, account
+│   │   │   │   ├── page.tsx                # All receipts — category filter tabs, sorted new→old
+│   │   │   │   └── [id]/page.tsx           # Unified receipt view/edit (Controleer gegevens)
+│   │   │   └── settings/page.tsx           # User settings — via header button, not bottom nav
 │   │   └── api/                            # Server-side API routes
 │   │       ├── ocr/route.ts                # POST /api/ocr — send image, get extracted data
 │   │       └── export/route.ts             # GET /api/export — download CSV/Excel
@@ -42,20 +41,19 @@ receipt-scanner/
 │   ├── components/
 │   │   ├── ui/                             # shadcn/ui components (auto-generated, don't edit)
 │   │   ├── layout/
-│   │   │   ├── BottomNav.tsx               # Bottom nav — Dashboard, Receipts, Scan, Settings
-│   │   │   ├── Header.tsx                  # Top bar — page title, back button, avatar
+│   │   │   ├── BottomNav.tsx               # Bottom nav — Home, + (scan popup), Bonnetjes (3 items, SVG icons)
+│   │   │   ├── Header.tsx                  # Top bar — page title, back button, round settings button
 │   │   │   └── PageContainer.tsx           # Page wrapper — padding, max-width, spacing
 │   │   ├── receipt/
-│   │   │   ├── ReceiptCard.tsx             # Receipt list item — store, date, amount, category
-│   │   │   ├── ReceiptDetail.tsx           # Full receipt view — all fields + image
-│   │   │   ├── ReceiptForm.tsx             # Edit form — used for OCR review + editing
-│   │   │   └── ReceiptList.tsx             # Scrollable receipt list — loading, empty, pagination
+│   │   │   ├── ReceiptCard.tsx             # Receipt list item — datum, bedrag, BTW%, categorie label
+│   │   │   ├── ReceiptForm.tsx             # Unified view/edit form — used for both new + existing receipts
+│   │   │   └── ReceiptList.tsx             # Scrollable receipt list — sorted new→old, no search
 │   │   ├── scan/
+│   │   │   ├── ScanSheet.tsx              # Bottom sheet popup — "Maak foto" / "Upload vanuit galerij"
 │   │   │   ├── CameraCapture.tsx           # Camera interface — live preview, capture button
-│   │   │   ├── ImageUpload.tsx             # File upload — drag-and-drop or gallery pick
-│   │   │   └── OcrResultReview.tsx         # Review OCR results — editable fields + image
+│   │   │   └── ImageUpload.tsx             # File upload — gallery pick
 │   │   └── common/
-│   │       ├── CategoryPicker.tsx          # Category dropdown — presets + custom, with icons
+│   │       ├── CategoryPicker.tsx          # Category dropdown — presets + custom, text labels (no emojis)
 │   │       ├── CategoryManager.tsx         # Bottom sheet — add/edit/delete categories
 │   │       ├── AmountDisplay.tsx           # Currency display — "€ 27,85" formatting
 │   │       └── EmptyState.tsx              # Empty list placeholder — message + illustration

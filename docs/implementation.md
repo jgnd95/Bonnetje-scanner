@@ -7,27 +7,34 @@ Open App → Login/Register → Dashboard (+ Export)
                                 │
                     ┌───────────┼───────────┐
                     │           │           │
-                 Scan/Upload  Receipts   Settings
-                    │         (+ Categories)
+                 + (popup)   Bonnetjes   Instellingen
+                    │        (+ Categorieën)  (via header)
                     ▼           │
-               OCR Processing Detail/Edit
-                    │
-               Review & Category
-                    │
-                 Saved!
+              Maak foto /       │
+              Upload galerij    │
+                    │           │
+               OCR Processing   │
+                    │           │
+                    └─────┬─────┘
+                          ▼
+                  Controleer gegevens
+                  (unified scherm)
+                          │
+                       Opslaan
 ```
 
 ### Flow explanation
 
 1. **Open App** — PWA loads, checks if user is authenticated
 2. **Login/Register** — If not authenticated, redirect to login. New users can register
-3. **Dashboard** — Shows monthly spending overview, recent receipts, quick stats. Export CSV/Excel from here
-4. **Scan/Upload** — User takes a photo with camera or picks an image from gallery
+3. **Dashboard** — Shows total receipts count + monthly amount, export CSV, recent receipts. No weekly stats or averages
+4. **"+" button** — Opens a bottom sheet popup with two options: "Maak foto" or "Upload vanuit galerij"
 5. **OCR Processing** — Image is sent to Google Vision, data is extracted
-6. **Review & Category** — User reviews extracted data, corrects mistakes, picks a category
+6. **Controleer gegevens** — Unified screen for both new and existing receipts. User reviews/edits fields: datum, bruto totaal, BTW%, BTW bedrag, betaalmethode, categorie, extra informatie. Receipt image visible at the bottom
 7. **Saved** — Receipt is stored in the database, user returns to dashboard
-8. **Receipts List** — Browse all receipts with category filter tabs, filterable by date and amount. "Manage categories" button opens a bottom sheet to add/edit/delete categories
-9. **Detail/Edit** — View a single receipt, edit fields, delete
+8. **Bonnetjes lijst** — Browse all receipts sorted newest first, with category filter tabs. No search bar. Each item shows: datum, bedrag, BTW%, categorie (text label). "Categorieën" button opens bottom sheet to manage categories
+9. **Opening existing receipt** — Tapping a receipt opens the same "Controleer gegevens" screen with all fields editable + image at the bottom. No separate detail or edit screen
+10. **Instellingen** — Accessible via round settings button in the header (top-right), not in the bottom nav
 
 ---
 

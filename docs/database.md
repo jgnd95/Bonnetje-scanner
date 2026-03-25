@@ -38,7 +38,7 @@ CREATE TABLE categories (
   user_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
   name TEXT NOT NULL,
   is_preset BOOLEAN DEFAULT FALSE,
-  icon TEXT, -- emoji or icon name
+  icon TEXT, -- icon name (no emojis in UI)
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 ```
@@ -49,7 +49,7 @@ CREATE TABLE categories (
 | `user_id` | UUID | Owner of the category |
 | `name` | TEXT | Category name (e.g. "Groceries", "Transport") |
 | `is_preset` | BOOLEAN | `true` = available to all users, `false` = custom |
-| `icon` | TEXT | Emoji or icon identifier for display |
+| `icon` | TEXT | Icon identifier for display (no emojis in UI) |
 | `created_at` | TIMESTAMPTZ | When the category was created |
 
 ---
@@ -64,7 +64,7 @@ CREATE TABLE receipts (
   user_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
 
   -- OCR-extracted data
-  store_name TEXT,
+  store_name TEXT,                          -- extracted by OCR but not displayed in UI
   date DATE,
   total_amount DECIMAL(10,2),
   tax_percentage DECIMAL(5,2),
@@ -74,7 +74,7 @@ CREATE TABLE receipts (
 
   -- User input
   category_id UUID REFERENCES categories(id) ON DELETE SET NULL,
-  notes TEXT,
+  extra_info TEXT,                           -- was "notes", renamed to "extra informatie"
 
   -- Image
   image_url TEXT NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE receipts (
 |--------|------|-------------|
 | `id` | UUID | Auto-generated unique ID |
 | `user_id` | UUID | Owner of the receipt |
-| `store_name` | TEXT | Store name extracted by OCR |
+| `store_name` | TEXT | Store name extracted by OCR (stored but not displayed in UI) |
 | `date` | DATE | Receipt date extracted by OCR |
 | `total_amount` | DECIMAL(10,2) | Total amount on receipt |
 | `tax_percentage` | DECIMAL(5,2) | VAT percentage (e.g. 21.00) |
@@ -102,7 +102,7 @@ CREATE TABLE receipts (
 | `payment_method` | TEXT | How it was paid: cash, pin, creditcard, ideal |
 | `currency` | TEXT | Defaults to EUR |
 | `category_id` | UUID | User-assigned category (nullable) |
-| `notes` | TEXT | Optional user notes |
+| `extra_info` | TEXT | Optional extra information (renamed from "notes") |
 | `image_url` | TEXT | Public URL to the receipt image |
 | `image_path` | TEXT | Storage path in Supabase bucket |
 | `raw_ocr_text` | TEXT | Full text returned by Google Vision |

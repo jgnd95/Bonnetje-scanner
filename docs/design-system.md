@@ -47,14 +47,48 @@ bg-[#2563EB] rounded-full px-6 py-3 text-white font-medium
 ```
 Used for: main actions like "Save", "Scan", "Export".
 
-### FAB (Floating Action Button)
+### Secondary Button
 ```
-bg-[#2563EB] rounded-full — positioned bottom-right
+bg-[#1E1E1E] border border-[#2E2E2E] rounded-full px-5 py-3 text-white font-medium
 ```
-Used for: the scan/upload button, always visible on main screens.
+Used for: secondary actions like "Upload vanuit galerij".
+
+### Danger Button
+```
+border border-[#EF4444] rounded-full text-[#EF4444]
+```
+Used for: destructive actions like "Bonnetje verwijderen".
+
+### Category Label
+```
+bg-[#2E2E2E] rounded-md px-2 py-0.5 text-[11px] font-medium text-white
+```
+Used for: category indicators on receipt list items. Plain text, no emojis.
+
+### Bottom Navigation
+```
+bg-[#1E1E1E] border-t border-[#2E2E2E] — fixed bottom, 3 items
+```
+- **3 items:** Home | + (scan) | Bonnetjes
+- **Icons:** Simple SVG line icons (no emojis)
+- **"+" button:** Centered, round, blue (`#2563EB`), slightly raised above the nav bar with subtle blue box-shadow
+- Tapping "+" opens a bottom sheet popup (not a separate screen)
+
+### Settings Button (Header)
+```
+w-10 h-10 rounded-full bg-[#1E1E1E] border border-[#2E2E2E] — gear icon
+```
+Round button in the top-right of the header. Replaces the user avatar. Opens settings screen.
+
+### Bottom Sheet
+```
+bg-[#1E1E1E] rounded-t-2xl — fixed bottom, overlay backdrop
+```
+Used for: scan options popup, category management. Has a drag handle at the top.
 
 ### General Rules
-- **No shadows** — borders handle visual separation
+- **No shadows** — borders handle visual separation (exception: blue glow on "+" button)
+- **No emojis in UI** — use SVG icons for navigation, plain text labels for categories
 - **Rounded corners** — `rounded-2xl` for cards, `rounded-full` for buttons
 - **Spacing** — consistent padding using Tailwind's spacing scale
 

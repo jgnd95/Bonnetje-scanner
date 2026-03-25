@@ -37,18 +37,17 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 1. Set up Next.js project with Tailwind + shadcn/ui
 2. Create Supabase project, deploy database schema
 3. Implement auth (register, login)
-4. Basic layout with bottom navigation
+4. Basic layout with bottom navigation (3 items: Home, +, Bonnetjes) + header with settings button
 
 ### Phase 2: Core Feature (Week 2-3)
-5. Build camera/upload component
+5. Build scan bottom sheet popup + camera/upload components
 6. Google Cloud Vision API integration
 7. Build and test receipt parser
-8. OCR review screen
+8. Unified "Controleer gegevens" screen (view/edit for new + existing receipts, image at bottom)
 
 ### Phase 3: Overview (Week 3-4)
-9. Dashboard with monthly overview + export (CSV/Excel)
-10. Receipts list with category filter tabs + "manage categories" bottom sheet
-11. Detail page per receipt
+9. Dashboard with total count + amount, export (CSV), recent receipts
+10. Receipts list with category filter tabs (text labels, no emojis), sorted new→old + "manage categories" bottom sheet
 
 ### Phase 4: Polish (Week 4-5)
 12. PWA configuration
