@@ -35,29 +35,29 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 
 ### Phase 1: Foundation (Week 1-2)
 
-#### 1. Project setup
-- [ ] Create Next.js 16 project (App Router, TypeScript, `src/` folder)
-- [ ] Install + configure Tailwind CSS (dark mode always-on)
-- [ ] Install shadcn/ui
-- [ ] Set up project structure (`src/app/`, `src/components/`, `src/lib/`, `src/types/`)
-- [ ] Configure ESLint
+#### 1. Project setup ✅
+- [x] Create Next.js 16 project (App Router, TypeScript, `src/` folder)
+- [x] Install + configure Tailwind CSS v4 (dark mode always-on)
+- [x] Install shadcn/ui
+- [x] Set up project structure (`src/app/`, `src/components/`, `src/lib/`, `src/types/`)
+- [x] Configure ESLint
 
-#### 2. Layout, navigatie & placeholder pages
-- [ ] **RootLayout** — dark mode class, Inter font, global styles
-- [ ] **DashboardLayout** — header + bottom nav + content area
-- [ ] **Header** — app title + settings button (top-right, round)
-- [ ] **Bottom Navigation** — Home, "+" (raised, blue glow), Bonnetjes
-- [ ] **SVG icons** — home, receipt/document, settings gear (no emojis)
-- [ ] **Placeholder pages** — `/` (dashboard), `/receipts`, `/settings`
+#### 2. Layout, navigatie & placeholder pages ✅
+- [x] **RootLayout** — dark mode class, Inter font, global styles
+- [x] **DashboardLayout** — header + bottom nav + content area
+- [x] **Header** — app title + settings button (top-right, round)
+- [x] **Bottom Navigation** — Home, "+" (raised, blue glow), Bonnetjes
+- [x] **SVG icons** — home, receipt/document, settings gear (no emojis)
+- [x] **Placeholder pages** — `/` (dashboard), `/receipts`, `/settings`
 
 #### 3. Supabase setup
 - [ ] Install `@supabase/supabase-js`
 - [ ] Create Supabase client (`lib/supabase/client.ts`)
-- [ ] Deploy database schema via SQL Editor (profiles, categories, receipts)
-- [ ] Enable RLS policies on all tables
-- [ ] Create storage bucket `receipts` with RLS policy
-- [ ] Create `handle_new_user()` trigger (auto-create profile on signup)
-- [ ] Verify database connection from Next.js
+- [ ] Deploy database schema via SQL Editor (profiles, categories, receipts) > Done
+- [ ] Enable RLS policies on all tables > Done
+- [ ] Create storage bucket `receipts` with RLS policy > Done
+- [ ] Create `handle_new_user()` trigger (auto-create  >profile on signup) > Done
+- [ ] Verify database connection from Next.js 
 
 #### 4. Authenticatie
 - [ ] Auth context/provider (`useAuth` hook)

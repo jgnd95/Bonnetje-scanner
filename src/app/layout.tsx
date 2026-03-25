@@ -1,11 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Geist } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
-import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
 
 export const metadata: Metadata = {
   title: 'Bonnetje Scanner',
@@ -25,8 +22,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="nl" className={cn("dark", "font-sans", geist.variable)}>
-      <body className={`${inter.className} bg-background text-text-primary antialiased`}>
+    <html lang="nl" className={`dark ${inter.variable}`}>
+      <body className="bg-background text-foreground antialiased">
         {children}
       </body>
     </html>
