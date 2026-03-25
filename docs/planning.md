@@ -50,22 +50,20 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] **SVG icons** — home, receipt/document, settings gear (no emojis)
 - [x] **Placeholder pages** — `/` (dashboard), `/receipts`, `/settings`
 
-#### 3. Supabase setup
-- [ ] Install `@supabase/supabase-js`
-- [ ] Create Supabase client (`lib/supabase/client.ts`)
-- [ ] Deploy database schema via SQL Editor (profiles, categories, receipts) > Done
-- [ ] Enable RLS policies on all tables > Done
-- [ ] Create storage bucket `receipts` with RLS policy > Done
-- [ ] Create `handle_new_user()` trigger (auto-create  >profile on signup) > Done
-- [ ] Verify database connection from Next.js 
+#### 3. Supabase setup ✅
+- [x] Install `@supabase/supabase-js`
+- [x] Create Supabase client (`src/lib/supabase/client.ts`)
+- [x] Deploy database schema via SQL Editor (profiles, categories, receipts)
+- [x] Enable RLS policies on all tables
+- [x] Create storage bucket `receipts` with RLS policy
+- [x] Create `handle_new_user()` trigger (auto-create profile on signup)
+- [x] Verify database connection from Next.js
 
-#### 4. Authenticatie
-- [ ] Auth context/provider (`useAuth` hook)
-- [ ] Register page (`/auth/register`) met error handling
-- [ ] Login page (`/auth/login`) met error handling
-- [ ] Logout functionaliteit (via settings)
-- [ ] Route protection middleware (unauthenticated → `/auth/login`)
-- [ ] Session persistence (auth state check on app load)
+#### 4. Authenticatie (anonymous-first)
+- [ ] Enable anonymous sign-ins in Supabase dashboard
+- [ ] AuthProvider — automatisch anoniem inloggen op app load
+- [ ] `useAuth` hook (user state, loading state, isAnonymous)
+- [ ] Settings: optioneel account aanmaken (email + wachtwoord upgrade)
 
 ### Phase 2: Core Feature (Week 2-3)
 5. Build scan bottom sheet popup + camera/upload components
