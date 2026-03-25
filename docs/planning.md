@@ -4,7 +4,7 @@
 
 **App_name:** Bonnetje Scanner
 **Type:** Progressive Web App (PWA) — mobile-first
-**Framework:** Next.js 14+ (App Router)
+**Framework:** Next.js 16 (App Router)
 **Backend:** Supabase (PostgreSQL, Auth, Storage)
 **OCR:** Google Cloud Vision API (1000 free/month)
 **UI Language:** Dutch
@@ -19,7 +19,7 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 
 | Layer | Technology | Why |
 |-------|------------|-----|
-| Framework | Next.js 14 (App Router) | Server components, API routes, PWA-ready |
+| Framework | Next.js 16 (App Router) | Server components, API routes, PWA-ready |
 | Styling | Tailwind CSS | Fast, clean, responsive |
 | UI Components | shadcn/ui | Professional components, works well with Tailwind |
 | Backend/DB | Supabase | PostgreSQL + Auth + Storage in one |
@@ -35,64 +35,37 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 
 ### Phase 1: Foundation (Week 1-2)
 
-#### 1. Set up Next.js project with Tailwind + shadcn/ui
-- [ ] Create Next.js 14 project (App Router, TypeScript)
-- [ ] Install Tailwind CSS + configure dark mode (always-on)
-- [ ] Install shadcn/ui and initialize
-- [ ] Set up project structure (`app/`, `components/`, `lib/`, `types/`)
-- [ ] Configure ESLint + Prettier
-- [ ] Install dependencies: @supabase/ssr, @supabase/supabase-js
+#### 1. Project setup
+- [ ] Create Next.js 16 project (App Router, TypeScript, `src/` folder)
+- [ ] Install + configure Tailwind CSS (dark mode always-on)
+- [ ] Install shadcn/ui
+- [ ] Set up project structure (`src/app/`, `src/components/`, `src/lib/`, `src/types/`)
+- [ ] Configure ESLint
 
-#### 2. Create Supabase project, deploy database schema
-- [ ] Run SQL statements in Supabase (profiles, categories, receipts tables)
-- [ ] Set up RLS policies for all tables
+#### 2. Layout, navigatie & placeholder pages
+- [ ] **RootLayout** — dark mode class, Inter font, global styles
+- [ ] **DashboardLayout** — header + bottom nav + content area
+- [ ] **Header** — app title + settings button (top-right, round)
+- [ ] **Bottom Navigation** — Home, "+" (raised, blue glow), Bonnetjes
+- [ ] **SVG icons** — home, receipt/document, settings gear (no emojis)
+- [ ] **Placeholder pages** — `/` (dashboard), `/receipts`, `/settings`
+
+#### 3. Supabase setup
+- [ ] Install `@supabase/supabase-js`
+- [ ] Create Supabase client (`lib/supabase/client.ts`)
+- [ ] Deploy database schema via SQL Editor (profiles, categories, receipts)
+- [ ] Enable RLS policies on all tables
 - [ ] Create storage bucket `receipts` with RLS policy
-- [ ] Create auth trigger function `handle_new_user()`
-- [ ] Verify database is accessible from Next.js
+- [ ] Create `handle_new_user()` trigger (auto-create profile on signup)
+- [ ] Verify database connection from Next.js
 
-#### 3. Implement auth (register, login)
-- [ ] Create `app/auth/layout.tsx` (auth page layout)
-- [ ] Build **Register** page (`/auth/register`)
-  - Email input + password input
-  - "Registreer" button
-  - Link to login
-  - Error handling (email already exists, weak password)
-- [ ] Build **Login** page (`/auth/login`)
-  - Email input + password input
-  - "Inloggen" button
-  - Link to register
-  - Error handling (wrong credentials)
-- [ ] Create Supabase auth client (`lib/supabase/client.ts`)
-- [ ] Create auth service (`lib/auth.ts`) with signup/login/logout functions
-- [ ] Set up auth context/provider for current user state
-- [ ] Implement route protection (redirect unauthenticated users to `/auth/login`)
-- [ ] Implement session persistence (check auth state on app load)
-
-#### 4. Basic layout with bottom navigation & header + settings button
-- [ ] Create **RootLayout** (`app/layout.tsx`)
-  - Dark mode class on `<html>`
-  - Global styles (Inter font)
-  - Auth provider wrapper
-- [ ] Create **MainLayout** (`app/(dashboard)/layout.tsx`) for authenticated pages
-  - Header with title + settings button (top-right)
-  - Bottom navigation (3 items: Home, +, Bonnetjes)
-  - Page content area
-- [ ] Build **Bottom Navigation** component
-  - Home icon → `/`
-  - "+" button (centered, raised, blue glow) → opens scan popup (Phase 2)
-  - Bonnetjes icon → `/receipts`
-  - Active state styling
-- [ ] Build **Settings Button** component
-  - Round button (40px) with border
-  - Click → navigate to `/settings` (placeholder for now)
-- [ ] Create **Pages** (placeholder versions):
-  - `/` (Dashboard)
-  - `/receipts` (Bonnetjes list)
-  - `/settings` (Settings)
-- [ ] Build **SVG Icons** (no emojis):
-  - Home icon
-  - Receipts/document icon
-  - Settings gear icon
+#### 4. Authenticatie
+- [ ] Auth context/provider (`useAuth` hook)
+- [ ] Register page (`/auth/register`) met error handling
+- [ ] Login page (`/auth/login`) met error handling
+- [ ] Logout functionaliteit (via settings)
+- [ ] Route protection middleware (unauthenticated → `/auth/login`)
+- [ ] Session persistence (auth state check on app load)
 
 ### Phase 2: Core Feature (Week 2-3)
 5. Build scan bottom sheet popup + camera/upload components
