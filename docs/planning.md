@@ -65,8 +65,9 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] `useAuth` hook (user state, loading state, isAnonymous)
 - [x] Settings: optioneel account aanmaken (email + wachtwoord upgrade)
 
-### Phase 2: Core Feature (Week 2-3)
-5. Build scan bottom sheet popup + camera/upload components
+### Phase 2: Core Feature (Week 2-3) 
+5.1 Build scan bottom sheet popup 
+5.2 Camera/upload components
 6. Google Cloud Vision API integration
 7. Build and test receipt parser
 8. Unified "Controleer gegevens" screen (view/edit for new + existing receipts, image at bottom)
