@@ -154,11 +154,11 @@ Shows:
 - Total amount (e.g., "€ 487,52") — large amount style (32px, bold)
 - Receipt count (e.g., "23 bonnetjes") — subtext
 
-### Export Section
+### Export Section (Bonnetjes pagina)
 ```
 background: var(--surface); padding: 16px; margin-bottom: 16px
 ```
-Contains:
+Located on the Bonnetjes list page, not the Dashboard. Contains:
 - Label: "Exporteer bonnetjes"
 - Two date inputs in flex row: `display: flex; gap: 8px;`
 - Primary button below: full width, "Download CSV"

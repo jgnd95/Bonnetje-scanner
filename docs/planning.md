@@ -87,14 +87,29 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] Opslaan naar database (receipts tabel + Supabase Storage)
 - [x] Na opslaan → terug naar dashboard
 
-#### 7. Google Cloud Vision API integratie
+#### 7. Dashboard
+- [ ] Maand header (bijv. "Maart 2026")
+- [ ] Totaalbedrag van de maand (groot, bold)
+- [ ] Aantal bonnetjes van de maand
+- [ ] Recente bonnetjes lijst (laatste 5) Gesorteerd van nieuw naar oud voor de desbetreffende user.
+
+#### 8. Bonnetjes lijst
+- [ ] Alle bonnetjes gesorteerd nieuw → oud
+- [ ] Per item: datum (bold) + bedrag • BTW% • categorie label
+- [ ] Categorie filter tabs (text labels, geen emojis)
+- [ ] Tik op bonnetje → opent "Controleer gegevens" scherm (bewerken)
+- [ ] "Categorieën" button → bottom sheet om categorieën te beheren (toevoegen/verwijderen)
+- [ ] Export sectie: datumbereik + "Download CSV" button
+- [ ] CSV export via `/api/export` 
+
+#### 9. Google Cloud Vision API integratie
 - [ ] Google Cloud Vision API key toevoegen aan `.env.local`
 - [ ] `POST /api/ocr` route handler bouwen
 - [ ] Auth token verificatie op API route
 - [ ] Image naar base64 → Google Vision `TEXT_DETECTION`
 - [ ] Raw OCR tekst teruggeven aan client
 
-#### 8. Receipt parser
+#### 10. Receipt parser
 - [ ] `parse-receipt.ts` — raw OCR tekst → gestructureerde data
 - [ ] Datum extraheren (regex: DD-MM-YYYY, DD/MM/YYYY, etc.)
 - [ ] Totaalbedrag extraheren (TOTAAL, TE BETALEN, TOTAL)
@@ -102,10 +117,6 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [ ] Betaalmethode extraheren (PIN, CONTANT, CASH, VISA)
 - [ ] Winkelnaam extraheren (eerste 1-2 regels)
 - [ ] Confidence score berekenen
-
-### Phase 3: Overview (Week 3-4)
-9. Dashboard with total count + amount, export (CSV), recent receipts
-10. Receipts list with category filter tabs (text labels, no emojis), sorted new→old + "manage categories" bottom sheet
 
 ### Phase 4: Polish (Week 4-5)
 12. PWA configuration

@@ -3,12 +3,13 @@
 ## User Flow
 
 ```
-Open App → Auto anonymous login → Dashboard (+ Export)
+Open App → Auto anonymous login → Dashboard
                                        │
                            ┌───────────┼───────────┐
                            │           │           │
                         + (popup)   Bonnetjes   Instellingen
-                           │        (+ Categorieën)  (via header)
+                           │     (+ Categorieën   (via header)
+                           │      + Export CSV)
                            ▼           │
                      Maak foto /       │
                      Upload galerij    │
@@ -26,7 +27,7 @@ Open App → Auto anonymous login → Dashboard (+ Export)
 ### Flow explanation
 
 1. **Open App** — PWA loads, AuthProvider checks for existing session. If none → automatically signs in anonymously via Supabase. User lands directly on Dashboard.
-2. **Dashboard** — Shows total receipts count + monthly amount, export CSV, recent receipts. No weekly stats or averages
+2. **Dashboard** — Shows total receipts count + monthly amount, recent receipts. No weekly stats or averages. No export here
 4. **"+" button** — Opens a bottom sheet popup with two options: "Maak foto" or "Upload vanuit galerij"
 5. **OCR Processing** — Image is sent to Google Vision, data is extracted
 6. **Controleer gegevens** — Unified screen for both new and existing receipts. User reviews/edits fields: datum, bruto totaal, BTW%, BTW bedrag, betaalmethode, categorie, extra informatie. Receipt image visible at the bottom
@@ -36,6 +37,7 @@ Open App → Auto anonymous login → Dashboard (+ Export)
    - No store name displayed
    - Category shown as text label chip, not emoji
    - "Categorieën" button opens bottom sheet to manage categories
+   - Export button: datumbereik selecteren + "Download CSV"
 9. **Opening existing receipt** — Tapping a receipt opens the same "Controleer gegevens" screen with all fields editable + image at the bottom. No separate detail or edit screen
 10. **Instellingen** — Accessible via round settings button in the header (top-right), not in the bottom nav
 11. **Account aanmaken (optioneel)** — In Settings, anonymous users can upgrade to a full account (email + password) via `updateUser()`. Same user_id is retained, all data stays linked. Without an account: clearing browser data = losing access to receipts
