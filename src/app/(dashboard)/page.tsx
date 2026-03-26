@@ -1,4 +1,10 @@
+'use client'
+
 export default function DashboardPage() {
+  function handleTest() {
+    alert('Test werkt!')
+  }
+
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-border bg-card p-6 text-center">
@@ -8,6 +14,8 @@ export default function DashboardPage() {
         <p className="mt-2 text-3xl font-bold">€ 0,00</p>
         <p className="mt-1 text-sm text-muted-foreground">0 bonnetjes</p>
       </div>
+
+      <button onClick={handleTest}>Test Button</button>
     </div>
   )
 }
