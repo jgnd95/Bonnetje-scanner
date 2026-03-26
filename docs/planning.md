@@ -59,11 +59,11 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] Create `handle_new_user()` trigger (auto-create profile on signup)
 - [x] Verify database connection from Next.js
 
-#### 4. Authenticatie (anonymous-first)
-- [ ] Enable anonymous sign-ins in Supabase dashboard
-- [ ] AuthProvider — automatisch anoniem inloggen op app load
-- [ ] `useAuth` hook (user state, loading state, isAnonymous)
-- [ ] Settings: optioneel account aanmaken (email + wachtwoord upgrade)
+#### 4. Authenticatie (anonymous-first) ✅
+- [x] Enable anonymous sign-ins in Supabase dashboard
+- [x] AuthProvider — automatisch anoniem inloggen op app load
+- [x] `useAuth` hook (user state, loading state, isAnonymous)
+- [x] Settings: optioneel account aanmaken (email + wachtwoord upgrade)
 
 ### Phase 2: Core Feature (Week 2-3)
 5. Build scan bottom sheet popup + camera/upload components
