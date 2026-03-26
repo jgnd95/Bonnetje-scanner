@@ -7,7 +7,7 @@ All data is stored in Supabase (PostgreSQL). This document covers all tables, in
 ## Supabase Setup
 
 **Project URL:** https://aaotnlfbmcnvszeuxzlb.supabase.co
-**Authentication:** Password-based (email + password)
+**Authentication:** Anonymous-first (auto sign-in), optional email + password upgrade
 
 ### Environment Variables
 

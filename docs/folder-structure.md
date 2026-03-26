@@ -3,92 +3,68 @@
 Complete overview of every file and folder in the project, with explanations.
 
 ```
-receipt-scanner/
+bonnetje-scanner/
 │
 ├── docs/                                   # Project documentation
-│   ├── planning.md                         # App overview, tech stack, costs, roadmap
-│   ├── database.md                         # Schema, RLS policies, storage buckets
+│   ├── planning.md                         # App overview, tech stack, roadmap
+│   ├── database.md                         # Schema, RLS policies, storage buckets, Supabase setup
 │   ├── design-system.md                    # Colors, typography, component styles
 │   ├── api.md                              # API endpoints, OCR pipeline
-│   ├── implementation.md                   # User flow, security, agents
+│   ├── implementation.md                   # User flow, security
 │   └── folder-structure.md                 # This file
 │
-├── public/                                 # Static assets (served directly to browser)
-│   ├── manifest.json                       # PWA manifest — app name, icons, colors, display mode
-│   ├── sw.js                               # Service worker — offline caching, background sync
-│   ├── icons/                              # App icons (192x192, 512x512, etc.)
-│   └── favicon.ico                         # Browser tab icon
+├── scripts/
+│   └── init-database.sql                   # SQL to initialize Supabase database
 │
 ├── src/
 │   ├── app/                                # Pages & routes (Next.js App Router)
-│   │   ├── layout.tsx                      # Root layout — fonts, providers, dark mode on <html>
-│   │   ├── page.tsx                        # Landing page — redirects to dashboard or login
-│   │   ├── globals.css                     # Global styles, Tailwind imports
-│   │   ├── (auth)/                         # Auth pages (no bottom nav)
-│   │   │   ├── login/page.tsx              # Login form — email + password
-│   │   │   └── register/page.tsx           # Register form — email, password, display name
-│   │   ├── (app)/                          # Authenticated pages (with bottom nav)
-│   │   │   ├── layout.tsx                  # App layout — BottomNav + Header wrapper
-│   │   │   ├── dashboard/page.tsx          # Total count + amount, export CSV, recent receipts
-│   │   │   ├── receipts/
-│   │   │   │   ├── page.tsx                # All receipts — category filter tabs, sorted new→old
-│   │   │   │   └── [id]/page.tsx           # Unified receipt view/edit (Controleer gegevens)
-│   │   │   └── settings/page.tsx           # User settings — via header button, not bottom nav
-│   │   └── api/                            # Server-side API routes
-│   │       ├── ocr/route.ts                # POST /api/ocr — send image, get extracted data
-│   │       └── export/route.ts             # GET /api/export — download CSV/Excel
+│   │   ├── layout.tsx                      # Root layout — Inter font, dark mode, AuthProvider
+│   │   ├── globals.css                     # Global styles, Tailwind v4 imports, design system colors
+│   │   └── (dashboard)/                    # Authenticated pages (with header + bottom nav)
+│   │       ├── layout.tsx                  # Dashboard layout — Header + BottomNav wrapper
+│   │       ├── page.tsx                    # Dashboard — monthly total, receipt count, recent 5
+│   │       ├── receipts/page.tsx           # Bonnetjes lijst — all receipts, category filters, manage categories
+│   │       ├── receipt/
+│   │       │   ├── new/page.tsx            # New receipt — loads pending image, shows ReceiptForm
+│   │       │   └── [id]/page.tsx           # Edit receipt — loads from Supabase, shows ReceiptForm
+│   │       └── settings/page.tsx           # Settings — account info, upgrade to email/password, logout
 │   │
 │   ├── components/
-│   │   ├── ui/                             # shadcn/ui components (auto-generated, don't edit)
-│   │   ├── layout/
-│   │   │   ├── BottomNav.tsx               # Bottom nav — Home, + (scan popup), Bonnetjes (3 items, SVG icons)
-│   │   │   ├── Header.tsx                  # Top bar — page title, back button, round settings button
-│   │   │   └── PageContainer.tsx           # Page wrapper — padding, max-width, spacing
-│   │   ├── receipt/
-│   │   │   ├── ReceiptCard.tsx             # Receipt list item — datum, bedrag, BTW%, categorie label
-│   │   │   ├── ReceiptForm.tsx             # Unified view/edit form — used for both new + existing receipts
-│   │   │   └── ReceiptList.tsx             # Scrollable receipt list — sorted new→old, no search
-│   │   ├── scan/
-│   │   │   ├── ScanSheet.tsx              # Bottom sheet popup — "Maak foto" / "Upload vanuit galerij"
-│   │   │   ├── CameraCapture.tsx           # Camera interface — live preview, capture button
-│   │   │   └── ImageUpload.tsx             # File upload — gallery pick
-│   │   └── common/
-│   │       ├── CategoryPicker.tsx          # Category dropdown — presets + custom, text labels (no emojis)
-│   │       ├── CategoryManager.tsx         # Bottom sheet — add/edit/delete categories
-│   │       ├── AmountDisplay.tsx           # Currency display — "€ 27,85" formatting
-│   │       └── EmptyState.tsx              # Empty list placeholder — message + illustration
+│   │   ├── ui/                             # shadcn/ui components (auto-generated)
+│   │   │   └── button.tsx
+│   │   ├── BottomNav.tsx                   # Bottom nav — Home, + (scan popup), Bonnetjes + scan sheet
+│   │   ├── BottomSheet.tsx                 # Reusable bottom sheet — overlay, drag handle, max 70vh
+│   │   ├── Header.tsx                      # Top bar — app title + settings button (gear icon)
+│   │   ├── ReceiptForm.tsx                 # Unified receipt form — new + edit, upload + save to Supabase
+│   │   └── ScanSheet.tsx                   # Scan options — "Maak foto" / "Upload vanuit galerij"
 │   │
 │   ├── lib/
+│   │   ├── auth/
+│   │   │   └── provider.tsx                # AuthProvider — anonymous login, useAuth hook, account upgrade
 │   │   ├── supabase/
-│   │   │   ├── client.ts                   # Browser-side Supabase client
-│   │   │   ├── server.ts                   # Server-side Supabase client (service role key)
-│   │   │   └── middleware.ts               # Auth middleware — session refresh, redirects
-│   │   ├── ocr/
-│   │   │   ├── google-vision.ts            # Google Vision API wrapper — send image, get text
-│   │   │   └── parse-receipt.ts            # Receipt parser — regex extraction of structured data
-│   │   ├── export/
-│   │   │   └── csv-generator.ts            # CSV/Excel generation via SheetJS
-│   │   └── utils/
-│   │       ├── format.ts                   # Currency, date, percentage formatting helpers
-│   │       └── image.ts                    # Image compression, resize, base64 conversion
+│   │   │   └── client.ts                   # Supabase client (browser-side)
+│   │   ├── image.ts                        # Client-side image compression/resize (max 1920px, JPEG 80%)
+│   │   └── utils.ts                        # shadcn/ui cn() helper
 │   │
-│   ├── hooks/
-│   │   ├── useReceipts.ts                  # CRUD receipts, loading/error states
-│   │   ├── useCategories.ts                # Fetch/create/delete categories, caching
-│   │   ├── useCamera.ts                    # Camera access, permissions, capture photo
-│   │   └── useAuth.ts                      # Auth state — login, register, logout, session
-│   │
-│   └── types/
-│       └── index.ts                        # Shared types: Receipt, Category, Profile, OcrResult
+│   └── types/                              # (To be added: shared TypeScript types)
 │
-├── supabase/
-│   ├── migrations/
-│   │   └── 001_initial.sql                 # Creates all tables, indexes, RLS, storage bucket
-│   └── seed.sql                            # Preset categories (Groceries, Transport, etc.)
-│
-├── next.config.js                          # Next.js config — PWA plugin, image domains
-├── tailwind.config.ts                      # Tailwind config — dark mode, custom colors, Inter font
-├── tsconfig.json                           # TypeScript — path aliases (@/), strict mode
+├── next.config.ts                          # Next.js config
+├── postcss.config.mjs                      # PostCSS config (Tailwind v4)
+├── tailwind.config.ts                      # Tailwind config — design system colors, Inter font
+├── tsconfig.json                           # TypeScript — path aliases (@/*), strict mode
+├── components.json                         # shadcn/ui config
 ├── package.json                            # Dependencies, scripts (dev, build, start, lint)
-└── .env.local                              # Secrets — Supabase URL/key, Vision API key (never commit)
+├── .env.local                              # Supabase URL + key (never commit)
+├── .gitignore                              # Ignores node_modules, .next, .env.local
+└── CLAUDE.md                               # Instructions for Claude Code
 ```
+
+## Key architectural decisions
+
+- **`src/` folder** — all source code lives in `src/`, keeping root clean
+- **`(dashboard)` route group** — groups all authenticated pages under one layout with Header + BottomNav
+- **No auth pages** — anonymous-first auth, no login/register needed (upgrade optional in Settings)
+- **`ReceiptForm` shared component** — same form for `/receipt/new` and `/receipt/[id]` (create + edit)
+- **`BottomNav` owns scan state** — scan sheet lives inside BottomNav, keeps dashboard layout as server component
+- **Next.js 15** — downgraded from 16 due to hydration issues
+- **Tailwind v4** — uses `@theme` CSS config instead of `tailwind.config.ts` for colors

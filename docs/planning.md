@@ -4,7 +4,7 @@
 
 **App_name:** Bonnetje Scanner
 **Type:** Progressive Web App (PWA) — mobile-first
-**Framework:** Next.js 16 (App Router)
+**Framework:** Next.js 15 (App Router)
 **Backend:** Supabase (PostgreSQL, Auth, Storage)
 **OCR:** Google Cloud Vision API (1000 free/month)
 **UI Language:** Dutch
@@ -19,7 +19,7 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 
 | Layer | Technology | Why |
 |-------|------------|-----|
-| Framework | Next.js 16 (App Router) | Server components, API routes, PWA-ready |
+| Framework | Next.js 15 (App Router) | Server components, API routes, PWA-ready |
 | Styling | Tailwind CSS | Fast, clean, responsive |
 | UI Components | shadcn/ui | Professional components, works well with Tailwind |
 | Backend/DB | Supabase | PostgreSQL + Auth + Storage in one |
@@ -36,7 +36,7 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 ### Phase 1: Foundation (Week 1-2)
 
 #### 1. Project setup ✅
-- [x] Create Next.js 16 project (App Router, TypeScript, `src/` folder)
+- [x] Create Next.js 15 project (App Router, TypeScript, `src/` folder)
 - [x] Install + configure Tailwind CSS v4 (dark mode always-on)
 - [x] Install shadcn/ui
 - [x] Set up project structure (`src/app/`, `src/components/`, `src/lib/`, `src/types/`)
@@ -116,12 +116,12 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [ ] Winkelnaam extraheren (eerste 1-2 regels)
 - [ ] Confidence score berekenen
 
-### Phase 4: Polish (Week 4-5)
+### Phase 3: Polish (Week 4-5)
 12. PWA configuration
 13. Test on various phones
 14. Performance optimization
 
-### Phase 5: Later
+### Phase 4: Later
 - English language (i18n)
 - Monthly/yearly reports
 - Full-text search on OCR text
