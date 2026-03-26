@@ -65,12 +65,43 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] `useAuth` hook (user state, loading state, isAnonymous)
 - [x] Settings: optioneel account aanmaken (email + wachtwoord upgrade)
 
-### Phase 2: Core Feature (Week 2-3) 
-5.1 Build scan bottom sheet popup 
-5.2 Camera/upload components
-6. Google Cloud Vision API integration
-7. Build and test receipt parser
-8. Unified "Controleer gegevens" screen (view/edit for new + existing receipts, image at bottom)
+### Phase 2: Core Feature (Week 2-3)
+
+#### 5.1 Scan bottom sheet popup ✅
+- [x] BottomSheet component (overlay, drag handle, max 70vh)
+- [x] ScanSheet component (2 opties: Maak foto, Upload vanuit galerij)
+- [x] "+" button in BottomNav opent sheet
+
+#### 5.2 Camera/upload components
+- [ ] Camera capture via `navigator.mediaDevices.getUserMedia()`
+- [ ] File picker voor galerij upload (`<input type="file" accept="image/*">`)
+- [ ] Client-side compressie/resize voor upload
+- [ ] Na selectie → door naar "Controleer gegevens" scherm
+
+#### 6. "Controleer gegevens" scherm
+- [ ] Unified scherm voor nieuwe + bestaande bonnetjes
+- [ ] Formulier: datum, bedrag, BTW%, BTW bedrag, betaalmethode, categorie, extra info
+- [ ] 2-kolom grid layout (datum full-width, rest in paren)
+- [ ] Categorie selector (dropdown)
+- [ ] Bonnetje foto onderaan zichtbaar
+- [ ] Opslaan naar database (receipts tabel + Supabase Storage)
+- [ ] Na opslaan → terug naar dashboard
+
+#### 7. Google Cloud Vision API integratie
+- [ ] Google Cloud Vision API key toevoegen aan `.env.local`
+- [ ] `POST /api/ocr` route handler bouwen
+- [ ] Auth token verificatie op API route
+- [ ] Image naar base64 → Google Vision `TEXT_DETECTION`
+- [ ] Raw OCR tekst teruggeven aan client
+
+#### 8. Receipt parser
+- [ ] `parse-receipt.ts` — raw OCR tekst → gestructureerde data
+- [ ] Datum extraheren (regex: DD-MM-YYYY, DD/MM/YYYY, etc.)
+- [ ] Totaalbedrag extraheren (TOTAAL, TE BETALEN, TOTAL)
+- [ ] BTW percentage + bedrag extraheren (BTW, VAT patterns)
+- [ ] Betaalmethode extraheren (PIN, CONTANT, CASH, VISA)
+- [ ] Winkelnaam extraheren (eerste 1-2 regels)
+- [ ] Confidence score berekenen
 
 ### Phase 3: Overview (Week 3-4)
 9. Dashboard with total count + amount, export (CSV), recent receipts
