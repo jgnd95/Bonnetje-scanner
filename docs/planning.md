@@ -78,14 +78,14 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] Client-side compressie/resize voor upload (`src/lib/image.ts`)
 - [x] Na selectie → door naar "Controleer gegevens" scherm (`/receipt/new`)
 
-#### 6. "Controleer gegevens" scherm
-- [ ] Unified scherm voor nieuwe + bestaande bonnetjes
-- [ ] Formulier: datum, totaalbedrag, BTW% (9% / 21% / leeg), bedrag excl. BTW (berekend), betaalmethode, categorie, extra informatie
-- [ ] 2-kolom grid layout (datum full-width, rest in paren)
-- [ ] Categorie selector (dropdown)
-- [ ] Bonnetje foto onderaan zichtbaar
-- [ ] Opslaan naar database (receipts tabel + Supabase Storage)
-- [ ] Na opslaan → terug naar dashboard
+#### 6. "Controleer gegevens" scherm ✅
+- [x] Unified scherm voor nieuwe + bestaande bonnetjes
+- [x] Formulier: datum, totaalbedrag, BTW% (9% / 21% / leeg), bedrag excl. BTW (berekend), betaalmethode, categorie, extra informatie
+- [x] 2-kolom grid layout (datum full-width, rest in paren)
+- [x] Categorie selector (dropdown)
+- [x] Bonnetje foto onderaan zichtbaar
+- [x] Opslaan naar database (receipts tabel + Supabase Storage)
+- [x] Na opslaan → terug naar dashboard
 
 #### 7. Google Cloud Vision API integratie
 - [ ] Google Cloud Vision API key toevoegen aan `.env.local`
