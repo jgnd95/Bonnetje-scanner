@@ -99,8 +99,6 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [ ] Categorie filter tabs (text labels, geen emojis)
 - [ ] Tik op bonnetje → opent "Controleer gegevens" scherm (bewerken)
 - [ ] "Categorieën" button → bottom sheet om categorieën te beheren (toevoegen/verwijderen)
-- [ ] Export sectie: datumbereik + "Download CSV" button
-- [ ] CSV export via `/api/export` 
 
 #### 9. Google Cloud Vision API integratie
 - [ ] Google Cloud Vision API key toevoegen aan `.env.local`
