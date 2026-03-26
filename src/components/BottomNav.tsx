@@ -28,7 +28,8 @@ export function BottomNav() {
 
         {/* Scan button */}
         <button
-          className="-mt-6 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_2px_12px_rgba(37,99,235,0.4)] transition hover:brightness-110 active:opacity-80"
+          onClick={() => alert('+')}
+          className="-mt-6 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-primary text-primary-foreground shadow-[0_2px_12px_rgba(37,99,235,0.4)] transition hover:brightness-110 active:opacity-80"
         >
           <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

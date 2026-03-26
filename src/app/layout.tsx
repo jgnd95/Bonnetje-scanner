@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`dark ${inter.variable}`}>
       <body className="bg-background text-foreground antialiased">
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          {children}
+         </AuthProvider>
       </body>
     </html>
   )
