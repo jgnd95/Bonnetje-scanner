@@ -93,12 +93,12 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] Aantal bonnetjes van de maand
 - [x] Recente bonnetjes lijst (laatste 5) gesorteerd van nieuw naar oud
 
-#### 8. Bonnetjes lijst
-- [ ] Alle bonnetjes gesorteerd nieuw → oud
-- [ ] Per item: datum (bold) + bedrag • BTW% • categorie label
-- [ ] Categorie filter tabs (text labels, geen emojis)
-- [ ] Tik op bonnetje → opent "Controleer gegevens" scherm (bewerken)
-- [ ] "Categorieën" button → bottom sheet om categorieën te beheren (toevoegen/verwijderen)
+#### 8. Bonnetjes lijst ✅
+- [x] Alle bonnetjes gesorteerd nieuw → oud
+- [x] Per item: datum (bold) + bedrag • BTW% • categorie label
+- [x] Categorie filter tabs (text labels, geen emojis)
+- [x] Tik op bonnetje → opent "Controleer gegevens" scherm (bewerken)
+- [x] "Categorieën" button → bottom sheet om categorieën te beheren (toevoegen/verwijderen)
 
 #### 9. Google Cloud Vision API integratie
 - [ ] Google Cloud Vision API key toevoegen aan `.env.local`
