@@ -12,7 +12,7 @@ export function ScanSheet({ onCamera, onUpload }: ScanSheetProps) {
 
       <button
         onClick={onCamera}
-        className="flex w-full items-center gap-4 rounded-2xl border border-border bg-background p-4 transition active:opacity-80"
+        className="flex w-full cursor-pointer items-center gap-4 rounded-2xl border border-border bg-background p-4 transition active:opacity-80"
       >
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
           <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -28,7 +28,7 @@ export function ScanSheet({ onCamera, onUpload }: ScanSheetProps) {
 
       <button
         onClick={onUpload}
-        className="flex w-full items-center gap-4 rounded-2xl border border-border bg-background p-4 transition active:opacity-80"
+        className="flex w-full cursor-pointer items-center gap-4 rounded-2xl border border-border bg-background p-4 transition active:opacity-80"
       >
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
           <svg className="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,17 +1,59 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { BottomSheet } from '@/components/BottomSheet'
 import { ScanSheet } from '@/components/ScanSheet'
+import { compressImage } from '@/lib/image'
 
 export function BottomNav() {
   const pathname = usePathname()
+  const router = useRouter()
   const [scanOpen, setScanOpen] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  async function handleFile(file: File) {
+    const compressed = await compressImage(file)
+    const url = URL.createObjectURL(compressed)
+    sessionStorage.setItem('pendingImage', url)
+    sessionStorage.setItem('pendingImageName', file.name)
+    router.push('/receipt/new')
+  }
+
+  function handleCamera() {
+    setScanOpen(false)
+    // On mobile, input with capture="environment" opens the camera directly
+    if (fileInputRef.current) {
+      fileInputRef.current.setAttribute('capture', 'environment')
+      fileInputRef.current.click()
+    }
+  }
+
+  function handleUpload() {
+    setScanOpen(false)
+    if (fileInputRef.current) {
+      fileInputRef.current.removeAttribute('capture')
+      fileInputRef.current.click()
+    }
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (file) handleFile(file)
+    e.target.value = ''
+  }
 
   return (
     <>
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/jpeg,image/png"
+        className="hidden"
+        onChange={handleFileChange}
+      />
+
       <nav className="fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-surface">
         <div className="mx-auto flex max-w-md items-center justify-evenly py-2">
           {/* Home */}
@@ -61,16 +103,7 @@ export function BottomNav() {
       </nav>
 
       <BottomSheet open={scanOpen} onClose={() => setScanOpen(false)}>
-        <ScanSheet
-          onCamera={() => {
-            setScanOpen(false)
-            // TODO: stap 5.2 — camera
-          }}
-          onUpload={() => {
-            setScanOpen(false)
-            // TODO: stap 5.2 — upload
-          }}
-        />
+        <ScanSheet onCamera={handleCamera} onUpload={handleUpload} />
       </BottomSheet>
     </>
   )

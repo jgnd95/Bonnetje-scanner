@@ -72,11 +72,11 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] ScanSheet component (2 opties: Maak foto, Upload vanuit galerij)
 - [x] "+" button in BottomNav opent sheet
 
-#### 5.2 Camera/upload components
-- [ ] Camera capture via `navigator.mediaDevices.getUserMedia()`
-- [ ] File picker voor galerij upload (`<input type="file" accept="image/*">`)
-- [ ] Client-side compressie/resize voor upload
-- [ ] Na selectie → door naar "Controleer gegevens" scherm
+#### 5.2 Camera/upload components ✅
+- [x] Camera capture via `capture="environment"` (mobiel) / file picker (desktop)
+- [x] File picker voor galerij upload (`<input type="file" accept="image/*">`)
+- [x] Client-side compressie/resize voor upload (`src/lib/image.ts`)
+- [x] Na selectie → door naar "Controleer gegevens" scherm (`/receipt/new`)
 
 #### 6. "Controleer gegevens" scherm
 - [ ] Unified scherm voor nieuwe + bestaande bonnetjes
