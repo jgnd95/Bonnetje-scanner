@@ -87,11 +87,11 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 - [x] Opslaan naar database (receipts tabel + Supabase Storage)
 - [x] Na opslaan → terug naar dashboard
 
-#### 7. Dashboard
-- [ ] Maand header (bijv. "Maart 2026")
-- [ ] Totaalbedrag van de maand (groot, bold)
-- [ ] Aantal bonnetjes van de maand
-- [ ] Recente bonnetjes lijst (laatste 5) Gesorteerd van nieuw naar oud voor de desbetreffende user.
+#### 7. Dashboard ✅
+- [x] Maand header (bijv. "Maart 2026")
+- [x] Totaalbedrag van de maand (groot, bold)
+- [x] Aantal bonnetjes van de maand
+- [x] Recente bonnetjes lijst (laatste 5) gesorteerd van nieuw naar oud
 
 #### 8. Bonnetjes lijst
 - [ ] Alle bonnetjes gesorteerd nieuw → oud
