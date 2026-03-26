@@ -100,6 +100,14 @@ export default function ReceiptsPage() {
       {/* Category filter tabs */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1">
         <button
+          onClick={() => setCatSheetOpen(true)}
+          className="flex shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground transition hover:brightness-110 active:opacity-80"
+        >
+          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+          </svg>
+        </button>
+        <button
           onClick={() => setActiveFilter(null)}
           className={`shrink-0 cursor-pointer rounded-full px-4 py-1.5 text-sm font-medium transition ${
             activeFilter === null
@@ -122,12 +130,6 @@ export default function ReceiptsPage() {
             {cat.name}
           </button>
         ))}
-        <button
-          onClick={() => setCatSheetOpen(true)}
-          className="shrink-0 cursor-pointer rounded-full border border-border px-3 py-1.5 text-sm text-muted-foreground transition hover:text-foreground"
-        >
-          Categorieën
-        </button>
       </div>
 
       {/* Receipts list */}
