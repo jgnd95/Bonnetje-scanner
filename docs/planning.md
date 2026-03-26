@@ -80,7 +80,7 @@ Users take a photo of a receipt or upload one. The app automatically extracts th
 
 #### 6. "Controleer gegevens" scherm
 - [ ] Unified scherm voor nieuwe + bestaande bonnetjes
-- [ ] Formulier: datum, bedrag, BTW%, BTW bedrag, betaalmethode, categorie, extra info
+- [ ] Formulier: datum, totaalbedrag, BTW% (9% / 21% / leeg), bedrag excl. BTW (berekend), betaalmethode, categorie, extra informatie
 - [ ] 2-kolom grid layout (datum full-width, rest in paren)
 - [ ] Categorie selector (dropdown)
 - [ ] Bonnetje foto onderaan zichtbaar
