@@ -34,7 +34,7 @@ export default function DashboardPage() {
         .eq('user_id', user!.id)
         .gte('date', monthStart)
         .lte('date', monthEnd)
-        .order('date', { ascending: false })
+        .order('created_at', { ascending: false })
 
       if (data) setReceipts(data as Receipt[])
       setLoading(false)
